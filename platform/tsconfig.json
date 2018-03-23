@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "sourceMap": true,
+        "declaration": false,
+        "moduleResolution": "node",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "skipLibCheck": true,
+        "target": "es5",
+        "module": "commonjs",
+        "outDir": "dist",
+        "lib": [
+            "es2016",
+            "dom"
+        ]
+    }
+}

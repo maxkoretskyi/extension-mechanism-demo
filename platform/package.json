@@ -1,0 +1,35 @@
+{
+    "name": "extension-mechanism-platform",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app/main.js",
+    "scripts": {
+        "start": "npm run build:vendors && webpack-dev-server --config=webpack.app.config.js",
+        "build": "npm run build:app && npm run build:vendors",
+        "build:app": "webpack --config=webpack.app.config.js",
+        "build:vendors": "webpack --config=webpack.vendors.config.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@angular/common": "^5.1.2",
+        "@angular/compiler": "^5.1.2",
+        "@angular/core": "^5.1.2",
+        "@angular/platform-browser": "^5.1.2",
+        "@angular/platform-browser-dynamic": "^5.1.2",
+        "core-js": "^2.5.3",
+        "finalhandler": "^1.1.1",
+        "html-webpack-plugin": "^3.1.0",
+        "rxjs": "^5.5.6",
+        "serve-static": "^1.13.2",
+        "systemjs": "^0.20.19",
+        "webpack": "^3.10.0",
+        "webpack-dev-server": "2.9.1",
+        "zone.js": "^0.8.19"
+    },
+    "devDependencies": {
+        "@types/node": "^8.5.2",
+        "awesome-typescript-loader": "^3.4.1",
+        "typescript": "^2.6.2"
+    }
+}

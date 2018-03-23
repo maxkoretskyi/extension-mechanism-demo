@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Angular QuickStart</title>
+    <meta charset="UTF-8">
+    <base href="/">
+
+    <script src="node_modules/core-js/client/shim.min.js"></script>
+    <script src="node_modules/zone.js/dist/zone.js"></script>
+    <script src="node_modules/systemjs/dist/system.src.js"></script>
+    <script>
+        SystemJS.import('vendors.bundle.js').then(() => {
+            return SystemJS.import('app.bundle.js');
+        }).catch(function (err) {
+            console.error(err);
+        });
+    </script>
+</head>
+
+<body>
+<myapp>Loading AppComponent content here ...</myapp>
+</body>
+</html>
