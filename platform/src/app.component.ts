@@ -23,7 +23,7 @@ export class CaAppComponent {
             const moduleRef = moduleFactory.create(this.injector);
             const widgets = moduleRef.injector.get('widgets');
             const resolver = moduleRef.componentFactoryResolver;
-            const componentFactory = resolver.resolveComponentFactory(widgets[0].component);
+            const componentFactory = resolver.resolveComponentFactory(widgets[0][0].component);
             this.vc.createComponent(componentFactory);
         })
     }
