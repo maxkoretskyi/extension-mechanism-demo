@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, ROUTES } from '@angular/router';
 import { ComponentA1 } from './a1.component';
 import { RouteTestComponent } from './route-test.component';
 

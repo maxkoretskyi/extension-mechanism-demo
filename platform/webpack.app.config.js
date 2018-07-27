@@ -5,8 +5,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        'app': path.join(process.cwd(), './src/main.ts'),
-        'vendors': path.join(process.cwd(), './src/vendors.ts')
+        'app': path.join(process.cwd(), './src/main.ts')
     },
 
     output: {
@@ -27,6 +26,14 @@ module.exports = {
             }
         ]
     },
+    externals: [
+        function (context, request, callback) {
+            if (/^@angular/.test(request)) {
+                return callback(null, 'commonjs ' + request);
+            }
+            callback();
+        }
+    ],
     plugins: [
         new HtmlWebpackPlugin({
             template: 'index.html',
@@ -37,11 +44,12 @@ module.exports = {
     devServer: {
         before(app) {
             const serveExtensionStatic = serveStatic(path.join(process.cwd(), '../extension/dist'));
+            const serverPlatformStatic = serveStatic(path.join(process.cwd(), 'dist'));
             app.use((req, res, next) => {
-                console.log(req.url);
                 if (req.url.includes('/a.module.js')) {
-                    console.log(req.url);
                     serveExtensionStatic(req, res, finalHandler(req, res));
+                } else if (req.url.includes('vendors.bundle.js')) {
+                    serverPlatformStatic(req, res, finalHandler(req, res));
                 } else {
                     next();
                 }

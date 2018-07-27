@@ -1,5 +1,5 @@
 import { Compiler, Component, Injector, SkipSelf, ViewChild, ViewContainerRef } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ROUTES } from '@angular/router';
 
 declare const SystemJS;
 
@@ -31,6 +31,7 @@ export class CaAppComponent {
                     // returns class to be compiled and instantiated
                     return module.default;
                 },
+                // this is the way to go if you already have compiled module
                 /*loadChildren: () => {
                     return new class My implements NgModuleFactory {
                         create() {
@@ -41,14 +42,13 @@ export class CaAppComponent {
                     }
                 }*/
             });
-            // this.router.resetConfig(routes);
-
-            // RouterConfigLoader.loadModuleFactory
+            this.router.resetConfig(routes);
 
             setTimeout(() => {
                 this.router.navigateByUrl('/loaded/t');
-            });
+            }, 2000);
 
+            // here is the code to get widgets if you need to
             /*const moduleFactory = this.compiler.compileModuleSync(module.default);
             const moduleRef = moduleFactory.create(this.injector);
             const widgets = moduleRef.injector.get('widgets');
